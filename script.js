@@ -65,6 +65,7 @@ function gameLoop() {
     // If the game is over, display restart button and score
     if (gameOver) {
         document.getElementById("restartButton").style.display = "block";
+        document.getElementById("score").innerText = "Score: " + score;
         return;
     }
 
@@ -86,9 +87,6 @@ function gameLoop() {
         ctx.fillStyle = "#0000FF";
         ctx.fill();
         ctx.closePath();
-
-        // Draw the score
-        drawScore();
 
         // Return and wait for player input
         requestAnimationFrame(gameLoop);
@@ -132,6 +130,9 @@ function gameLoop() {
     // Clear the canvas
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
+    // Draw the score
+    drawScore();
+
     // Draw the ball
     ctx.beginPath();
     ctx.arc(ballX, ballY, BALL_RADIUS, 0, Math.PI * 2);
@@ -145,9 +146,6 @@ function gameLoop() {
     ctx.fillStyle = "#0000FF";
     ctx.fill();
     ctx.closePath();
-
-    // Draw the score
-    drawScore();
 
     requestAnimationFrame(gameLoop);
 }
